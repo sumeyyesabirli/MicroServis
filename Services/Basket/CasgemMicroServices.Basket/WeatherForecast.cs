@@ -1,4 +1,4 @@
-namespace CasgemMicroServices.Catalog
+namespace CasgemMicroServices.Basket
 {
     public class WeatherForecast
     {

@@ -1,4 +1,8 @@
-﻿namespace CasgemMicroServices.Cargo.Dtos.ProductDtos
+﻿using CasgemMicroServices.Catalog.Models;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+
+namespace CasgemMicroServices.Catalog.Dtos.ProductDto
 {
     public class UpdateProductDto
     {

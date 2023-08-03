@@ -1,6 +1,6 @@
-﻿namespace CasgemMicroServices.Cargo.Dtos.CategoryDtos
+﻿namespace CasgemMicroServices.Catalog.Dtos.CategoryDto
 {
-    public class UpdateCategoryDto
+    public class ResultCategoryDto
     {
         public string CategoryID { get; set; }
         public string CategoryName { get; set; }

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace CasgemMicroServices.Cargo.Models
+namespace CasgemMicroServices.Catalog.Models
 {
     public class Category
     {
