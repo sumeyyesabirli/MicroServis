@@ -20,29 +20,59 @@ namespace Microservices.Catalog.Services.CategoryServices
             _categoryCollection = database.GetCollection<Category>(_dataBaseSettings.CategoryCollectionName);
         }
 
-        public Task<Response<CreateCategoryDto>> CreateCategoryAsync(CreateCategoryDto createCategory)
+        public async Task<Response<CreateCategoryDto>> CreateCategoryAsync(CreateCategoryDto createCategory)
         {
-            throw new NotImplementedException();
+           var value = _mapper.Map<Category>(createCategory);
+            await _categoryCollection.InsertOneAsync(value);
+            return Response<CreateCategoryDto>.Success(_mapper.Map<CreateCategoryDto>(value), 200);
         }
 
-        public Task<Response<NoContent>> DeleteCategoryAsync(string id)
+        public async Task<Response<NoContent>> DeleteCategoryAsync(string id)
         {
-            throw new NotImplementedException();
+            var value= await _categoryCollection.DeleteOneAsync(id);
+            if(value.DeletedCount>0)
+            {
+                return Response<NoContent>.Success(204);
+            }
+            else
+            {
+                return Response<NoContent>.Fail("Silinecek Data Yok", 400);
+            }
         }
 
-        public Task<Response<ResultCategoryDto>> GetCategoryByIdAsync(string id)
+        public async Task<Response<ResultCategoryDto>> GetCategoryByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            var values = await _categoryCollection.Find<Category>(x=>x.CategoryID==id).FirstOrDefaultAsync();
+
+            if(values==null)
+            {
+                return Response<ResultCategoryDto>.Fail("Böyle bi id yok", 404);
+
+            }
+            else
+            {
+                return Response<ResultCategoryDto>.Success(_mapper.Map<ResultCategoryDto>(values), 200);
+            }
         }
 
-        public Task<Response<List<ResultCategoryDto>>> GetCategoryListAsync()
+        public async Task<Response<List<ResultCategoryDto>>> GetCategoryListAsync()
         {
-            throw new NotImplementedException();
-        }
+            var values = await _categoryCollection.Find(x=> true).ToListAsync();
+            return  Response<List<ResultCategoryDto>>.Success(_mapper.Map<List<ResultCategoryDto>>(values),200);
+        }    
 
-        public Task<Response<UpdateCategoryDto>> UpdateCategoryAsync(UpdateCategoryDto updateCategory)
+        public async Task<Response<UpdateCategoryDto>> UpdateCategoryAsync(UpdateCategoryDto updateCategory)
         {
-            throw new NotImplementedException();
+            var values= _mapper.Map<Category>(updateCategory);
+            var result = await _categoryCollection.FindOneAndReplaceAsync(x => x.CategoryID == updateCategory.CategoryID, values);
+            if(result==null)
+            {
+                return Response<UpdateCategoryDto>.Fail("Güncellenecek veri bulunumadı", 400);
+            }
+            else
+            {
+                return Response<UpdateCategoryDto>.Success(204);
+            }
         }
     }
 }
