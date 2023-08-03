@@ -4,17 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:51523",
-      "sslPort": 44338
+      "applicationUrl": "http://localhost:41068",
+      "sslPort": 44375
     }
   },
   "profiles": {
-    "CasgemMicroServices.Discount": {
+    "CasgemMicroservices.Discount": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7117;http://localhost:5045",
+      "applicationUrl": "https://localhost:7293;http://localhost:5005",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

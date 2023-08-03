@@ -1,4 +1,4 @@
-namespace CasgemMicroServices.Cargo
+namespace CasgemMicroservices.Cargo
 {
     public class WeatherForecast
     {

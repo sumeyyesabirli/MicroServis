@@ -1,4 +1,4 @@
-namespace CasgemMicroServices.Discount
+namespace CasgemMicroservices.Discount
 {
     public class WeatherForecast
     {
