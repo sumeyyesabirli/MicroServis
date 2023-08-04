@@ -2,7 +2,7 @@
 
 namespace Microservices.Catalog.Models
 {
-    public class Product
+    public class Products
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]

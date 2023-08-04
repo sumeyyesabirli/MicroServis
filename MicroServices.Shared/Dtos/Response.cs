@@ -19,24 +19,27 @@ namespace MicroServices.Shared.Dtos
             return new Response<T> { Data = data, StatusCode = statusCode, IsSuccessful = true };
 
         }
-       public static Response<T> Success(int statusCode)
-       {
+        public static Response<T> Success(int statusCode)
+        {
             return new Response<T>
             {
                 Data = default(T),
                 StatusCode = statusCode,
                 IsSuccessful = true
+
             };
-       }
+        }
+
         public static Response<T> Fail(List<string> errors, int statusCode)
         {
             return new Response<T> { IsSuccessful = false, Errors = errors, StatusCode = statusCode };
         }
-        public static Response<T> Fail(string errors,int statusCode)
+
+        public static Response<T> Fail(string errors , int statusCode)
         {
-            return new Response<T>
+            return new Response<T> 
             {
-                Errors = new List<string> () { errors },
+                Errors = new List<string>() { errors },
                 IsSuccessful = false,
                 StatusCode = statusCode
             };

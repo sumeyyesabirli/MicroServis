@@ -10,12 +10,13 @@ namespace Microservices.Catalog.Mapping
         public GeneralMapping()
         {
             CreateMap<Category,ResultCategoryDto>().ReverseMap();
-            CreateMap<Category,CreateCategoryDto>().ReverseMap();
-            CreateMap<Category,UpdateCategoryDto>().ReverseMap();
+            CreateMap<Category, ResultCategoryDto>().ReverseMap();
+            CreateMap<Category, CreateCategoryDto>().ReverseMap();
+            CreateMap<Category, UpdateCategoryDto>().ReverseMap();
 
-            CreateMap<Product, ResultProductDto>().ReverseMap();
-            CreateMap<Product, CreateProductDto>().ReverseMap();
-            CreateMap<Product, UpdateProductDto>().ReverseMap();
+            CreateMap<Products, ResultProductDto>().ReverseMap();
+            CreateMap<Products, CreateProductDto>().ReverseMap();
+            CreateMap<Products, UpdateProductDto>().ReverseMap();
         }
     }
 }
